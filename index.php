@@ -1,5 +1,12 @@
 
 <?php
+$config = require "app/config/global.php";
+if ($config['debug'] == true) {
+    error_reporting(E_ALL);
+} else {
+    error_reporting(0);
+}
+
 require "vendor/autoload.php";
 require_once('libs/Smarty.class.php');
 use Respect\Rest\Router;
@@ -10,7 +17,7 @@ $smarty->setCompileDir('smarty/compile/');
 $smarty->setConfigDir('smarty/configs/');
 $smarty->setCacheDir('smarty/cache/');
 
-$config = require "app/config/global.php";
+
 $db = new MysqliDb (Array (
     'host' => $config['db']['host'],
     'username' => $config['db']['username'],
