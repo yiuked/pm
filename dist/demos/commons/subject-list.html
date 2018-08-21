@@ -1,19 +1,19 @@
 {foreach $subjects as $subject}
 <br>
 <div><strong>{$subject@iteration}.{$subject.name}</strong></div>
-<div>
+<div class="checked-item">
     <input type="radio" name="checked[{$subject.id}]" value="A" {if $subject.checked|default:false && $subject.checked=='A'}checked{/if} {if $show}disabled{/if}> A.{$subject.itemA}
     {if $show && $subject.result=='A'}<i class="weui-icon-success"></i>{/if}
 </div>
-<div>
+<div class="checked-item">
     <input type="radio" name="checked[{$subject.id}]" value="B" {if $subject.checked|default:false && $subject.checked=='B'}checked{/if} {if $show}disabled{/if}> B.{$subject.itemB}
     {if $show && $subject.result=='B'}<i class="weui-icon-success"></i>{/if}
 </div>
-<div>
+<div class="checked-item">
     <input type="radio" name="checked[{$subject.id}]" value="C" {if $subject.checked|default:false && $subject.checked=='C'}checked{/if} {if $show}disabled{/if}> C.{$subject.itemC}
     {if $show && $subject.result=='C'}<i class="weui-icon-success"></i>{/if}
 </div>
-<div>
+<div class="checked-item">
     <input type="radio" name="checked[{$subject.id}]" value="D" {if $subject.checked|default:false && $subject.checked=='D'}checked{/if} {if $show}disabled{/if}> D.{$subject.itemD}
     {if $show && $subject.result=='D'}<i class="weui-icon-success"></i>{/if}
 </div>

@@ -95,3 +95,9 @@ td{
 .blankStyle .span2{margin-top:30px}.blankStyle .span3{margin-top:16px}
 td.noPadding{padding:0}td.noPadding p{margin:0}p.one{border-bottom:1px solid #d8d8d8}
 .tkCMain p.left{text-align:left;padding-left:131px}
+.checked-item {
+    cursor: pointer;
+}
+.checked-item:hover {
+    color: #ff6600;
+}

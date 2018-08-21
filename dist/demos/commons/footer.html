@@ -4,6 +4,9 @@
 <script>
     $(function() {
         FastClick.attach(document.body);
+        $(".checked-item").click(function(){
+            $(this).find('input').prop('checked', 'checked');
+        })
     });
 </script>
 <script src="/dist/js/jquery-weui.js"></script>
