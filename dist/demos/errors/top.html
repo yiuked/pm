@@ -1,0 +1,27 @@
+{include file='commons/header.html'}
+<link href="/dist/demos/css/agreement.css" rel="stylesheet" type="text/css" charset="utf-8">
+<div class="body-content">
+    <div class="content">
+        <div class="tkCont">
+            <div class="tkCMain">
+                <form action="/errors/top/{$start}/{$end}" method="post">
+                    <div class="title" style="margin-bottom:20px;">PMP在线考题</div>
+                    <p class="sign small">生成时间: <span style="text-decoration: underline;">{$smarty.now|date_format:'%Y-%m-%d'} </span>
+                    </p>
+                    {include file='commons/subject-list.html'}
+                    {if $show == true}
+                    <a href="/errors/top/{$start}/{$end}" class="weui-btn weui-btn_primary">再做一次</a>
+                    {else}
+                    <button type="submit" class="weui-btn weui-btn_primary">提交</button>
+                    {/if}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{include file='commons/footer.html'}
+{if $show == true}
+<script>
+    $.alert("{$msg}", "结果");
+</script>
+{/if}

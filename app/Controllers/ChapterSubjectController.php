@@ -7,7 +7,7 @@
  */
 
 namespace App\controllers;
-
+use App\Helper\DbHelper;
 
 class ChapterSubjectController extends Controller
 {
@@ -28,25 +28,12 @@ class ChapterSubjectController extends Controller
         $id = (int)$id;
         $subjects = $this->db->where('test_id', $id)->get("subjects", null, $cols);
 
-        $total = count($subjects);
-        $isOK = 0;
-        if (isset($_POST['checked'])) {
-            $checked = $_POST['checked'];
-            foreach ($subjects as $key => &$subject) {
-                if (array_key_exists($subject['id'], $checked)) {
-                    $subject['checked'] = $checked[$subject['id']];
-                    if ($subject['result'] == $checked[$subject['id']]) {
-                        $subject['is_ok'] = true;
-                        $isOK++;
-                    }
-                }
-            }
-        }
+        $static = DbHelper::checkSubject($this->db, $subjects,  $_POST['checked']);
 
         $this->smarty->assign('subjects', $subjects);
         $this->smarty->assign('show', true);
         $this->smarty->assign('id', $id);
-        $this->smarty->assign('msg', "共{$total}道题，答对{$isOK}道，正确率" . round($isOK / $total, 2) . "%.");
+        $this->smarty->assign('msg', "共{$static['total']}道题，答对{$static['isTrue']}道，正确率{$static['trueApr']}%.");
         return $this->smarty->display('chapter/subject.html');
     }
 }

@@ -9,7 +9,7 @@
 namespace App\controllers;
 
 
-class ErrorsTopController extends Controller
+class ErrorsController extends Controller
 {
     public function get()
     {

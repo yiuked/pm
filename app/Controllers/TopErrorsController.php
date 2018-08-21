@@ -9,7 +9,9 @@
 namespace App\controllers;
 
 
-class PdfController extends Controller
+use App\Helper\DbHelper;
+
+class TopErrorsController extends Controller
 {
     public function get($start, $end)
     {
@@ -21,7 +23,7 @@ class PdfController extends Controller
         $this->smarty->assign('show', false);
         $this->smarty->assign('start', $start * 100);
         $this->smarty->assign('end', $end * 100);
-        return $this->smarty->display('pdf.html');
+        return $this->smarty->display('errors/top.html');
     }
 
     public function post($start, $end)
@@ -32,24 +34,14 @@ class PdfController extends Controller
         $cols = Array("*,ROUND(true_count/answer_count,2) as true_apr");
         $subjects = $this->db->having("true_apr BETWEEN {$start} AND {$end}")->get("subjects", null, $cols);
 
-        $total = count($subjects);
-        $isOK = 0;
-        if (isset($_POST['checked'])) {
-            $checked = $_POST['checked'];
-            foreach ($subjects as $key => &$subject) {
-                if (array_key_exists($subject['id'], $checked) && $subject['result'] == $checked[$subject['id']]) {
-                    $subject['is_ok'] = true;
-                    $isOK++;
-                }
-            }
-        }
+        $static = DbHelper::checkSubject($this->db, $subjects,  $_POST['checked']);
 
         $this->smarty->assign('subjects', $subjects);
         $this->smarty->assign('show', true);
         $this->smarty->assign('start', $start * 100);
         $this->smarty->assign('end', $end * 100);
-        $this->smarty->assign('msg', "共{$total}道题，答对{$isOK}道，正确率" . round($isOK / $total, 2) . "%.");
-        return $this->smarty->display('pdf.html');
+        $this->smarty->assign('msg', "共{$static['total']}道题，答对{$static['isTrue']}道，正确率{$static['trueApr']}%.");
+        return $this->smarty->display('errors/top.html');
     }
 
 }
