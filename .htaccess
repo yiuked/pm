@@ -1,0 +1,10 @@
+<IFModule mod_rewrite.c>
+RewriteEngine on
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^.*(\.css|\.js|\.gif|\.png|\.jpg|\.jpeg)$
+
+RewriteRule . index.php
+ErrorDocument 404 /error.html
+</IfModule>

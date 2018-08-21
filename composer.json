@@ -1,0 +1,27 @@
+{
+    "name": "app/pmp",
+    "description": "pmp",
+    "type": "library",
+    "license": "apache",
+    "authors": [
+        {
+            "name": "yiuked",
+            "email": "yiuked@vip.qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "joshcam/mysqli-database-class": "dev-master",
+        "respect/rest": "^0.6.0@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\": "app"
+        }
+    }
+}

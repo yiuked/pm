@@ -1,0 +1,97 @@
+{margin:0px; padding:0px;}
+body { min-width:1234px; background:#eee; font-family: STHeiti,"Microsoft Yahei", "寰蒋闆呴粦", tahoma,arial,'Hiragino Sans GB',\5b8b\4f53,sans-serif;font-size:12px; padding:0px;margin:0px;  color:#323232; }
+a {color:#323232; text-decoration:none; outline:none; cursor:pointer; }
+.clear {margin:0px; padding:0px; clear:both;}
+ul,li{list-style-type:none}
+@media screen and (max-device-width: 640px){body{-webkit-text-size-adjust:none;}}
+a{ text-decoration:none; outline:none; blr:expression(this.onFocus=this.blur()); }
+img { border:none;vertical-align:middle;}
+INPUT { padding:1px 1px 4px 4px; margin:0px;}
+input::-ms-clear{display:none;}
+h1,h2,h3,h4,h5,h6 {font-weight:normal; padding:0px; margin:0px;}
+
+.body-content{
+    background:#fff;
+    border:1px solid #e1e1e1;
+    margin:20px auto;
+    width: 958px;
+    position:relative;
+}
+.agreement_sign {background:url('../images/static/about/agreement.png') no-repeat;height:156px;width:196px;position:absolute;right:10px;top:5px;}
+.content{
+    overflow: hidden;
+    margin:auto;
+    width: 730px;
+}
+.tkCMain {
+    color: #333333;
+    overflow: hidden;
+    padding: 30px 0;
+}
+.tkCMain p {
+    font-size:14px;
+    line-height: 28px;
+    text-indent: 2em;
+    margin:5px auto;
+}
+.tkCMain div {
+    font-size:14px;
+    line-height: 28px;
+    margin:3px auto;
+}
+.tkCMain div i{
+    font-style: normal;
+}
+.tkCMain .title{
+    text-align:center;
+    font-weight:bold;
+    font-size:20px;
+}
+.tkCMain .chapter{
+    color:#000;
+    font-size:18px;
+    margin:40px 0px 20px;
+    display:block;
+}
+.tkCMain .section{
+    text-indent: 3.5em;
+}
+.tkCMain .sign{
+    text-align:right;
+}
+.tkCMain .small{
+    font-size:12px;
+    line-height:normal;
+}
+a{color:#4ea1e3;}
+
+table{
+    border-collapse: collapse;
+    border: none;
+    width: 100%;
+    margin:27px auto;
+}
+td,th{
+    border: solid 1px #d8d8d8;
+    padding:10px 0px;
+    line-height:27px;
+    text-align:center;
+}
+th{
+    font-size:16px;
+    font-weight:normal;
+    background:#f2f2f2;
+}
+td{
+    font-size:14px;
+}
+
+.tableSection {
+    background: #f6f6f6;
+}
+
+.blankStyle span{width:256px;display:inline-block;float:left}
+.blankStyle .span1{padding:16px 20px 20px 0;border-right:1px solid #d8d8d8}
+.blankStyle .span2{margin-top:30px}.blankStyle .span3{margin-top:16px}
+td.noPadding{padding:0}td.noPadding p{margin:0}p.one{border-bottom:1px solid #d8d8d8}
+.tkCMain p.left{text-align:left;padding-left:131px}

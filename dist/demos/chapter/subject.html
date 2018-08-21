@@ -1,0 +1,52 @@
+{include file='commons/header.html'}
+<link href="/dist/demos/css/agreement.css" rel="stylesheet" type="text/css" charset="utf-8">
+<div class="body-content">
+  <div class="content">
+    <div class="tkCont">
+      <div class="tkCMain">
+        <form action="/chapter/subject/{$id}" method="post">
+          <div class="title" style="margin-bottom:20px;">PMP在线考题</div>
+          <p class="sign small">生成时间: <span style="text-decoration: underline;">{$smarty.now|date_format:'%Y-%m-%d'} </span>
+          </p>
+          {foreach $subjects as $subject}
+          <br>
+          <div><strong>{$subject@iteration}.{$subject.name}</strong></div>
+          <div>
+            <input type="radio" name="checked[{$subject.id}]" value="A" {if $subject.checked|default:false && $subject.checked=='A'}checked{/if} {if $show}disabled{/if}> A.{$subject.itemA}
+            {if $show && $subject.result=='A'}<i class="weui-icon-success"></i>{/if}
+          </div>
+          <div>
+            <input type="radio" name="checked[{$subject.id}]" value="B" {if $subject.checked|default:false && $subject.checked=='B'}checked{/if} {if $show}disabled{/if}> A.{$subject.itemB}
+            {if $show && $subject.result=='B'}<i class="weui-icon-success"></i>{/if}
+          </div>
+          <div>
+            <input type="radio" name="checked[{$subject.id}]" value="C" {if $subject.checked|default:false && $subject.checked=='C'}checked{/if} {if $show}disabled{/if}> A.{$subject.itemC}
+            {if $show && $subject.result=='C'}<i class="weui-icon-success"></i>{/if}
+          </div>
+          <div>
+            <input type="radio" name="checked[{$subject.id}]" value="D" {if $subject.checked|default:false && $subject.checked=='D'}checked{/if} {if $show}disabled{/if}> A.{$subject.itemD}
+            {if $show && $subject.result=='D'}<i class="weui-icon-success"></i>{/if}
+          </div>
+          {if $show == true}
+          <br>
+          <div><strong>解析</strong></div>
+          <div>答案:{$subject.result}</div>
+          <div>{$subject.jiexi}</div>
+          {/if}
+          {/foreach}
+          {if $show == true}
+          <a href="/chapter/subject/{$id}" class="weui-btn weui-btn_primary">再做一次</a>
+          {else}
+          <button type="submit" class="weui-btn weui-btn_primary">提交</button>
+          {/if}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{include file='commons/footer.html'}
+{if $show == true}
+<script>
+    $.alert("{$msg}", "结果");
+</script>
+{/if}

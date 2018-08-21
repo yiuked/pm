@@ -1,0 +1,20 @@
+{include file='commons/header.html'}
+<div style="width: 980px;margin: 0 auto;border-right:1px solid #e5e5e5;border-left: 1px solid #e5e5e5; ">
+    <div class="bd">
+      <div class="page__bd">
+        <div class="weui-cells">
+          {foreach $chapters as $chapter}
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+              <p class="weui-media-box__desc">{$chapter.name}({$chapter.count}题)</p>
+            </div>
+            <div class="weui-cell__ft">
+              <a href="/chapter/subject/{$chapter.id}" class="weui-btn weui-btn_mini weui-btn_default">答题</a>
+            </div>
+          </div>
+          {/foreach}
+        </div>
+      </div>
+    </div>
+</div>
+{include file='commons/footer.html'}
