@@ -34,3 +34,5 @@ $r3->any('/chapter/subject/*/*', 'App\Controllers\ChapterSubjectController');
 $r3->any('/errors/', 'App\Controllers\ErrorsController');
 $r3->any('/errors/top/*/*', 'App\Controllers\TopErrorsController');
 $r3->any('/errors/my', 'App\Controllers\MyErrorsController');
+$r3->any('/search/', 'App\Controllers\SearchController');
+$r3->any('/search/result/*', 'App\Controllers\SearchResultController');
