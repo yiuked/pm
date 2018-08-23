@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit5aef1406a76b8c3b031d26fd7f322bf0
+class ComposerStaticInitcaea7251c911c94ce234d55d14e84227
 {
     public static $files = array (
         '9c9a81795c809f4710dd20bec1e349df' => __DIR__ . '/..' . '/joshcam/mysqli-database-class/MysqliDb.php',
@@ -37,8 +37,8 @@ class ComposerStaticInit5aef1406a76b8c3b031d26fd7f322bf0
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit5aef1406a76b8c3b031d26fd7f322bf0::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit5aef1406a76b8c3b031d26fd7f322bf0::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitcaea7251c911c94ce234d55d14e84227::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitcaea7251c911c94ce234d55d14e84227::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }
