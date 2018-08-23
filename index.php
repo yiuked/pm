@@ -1,4 +1,3 @@
-
 <?php
 $config = require "app/config/global.php";
 if ($config['debug'] == true) {
@@ -36,3 +35,9 @@ $r3->any('/errors/top/*/*', 'App\Controllers\TopErrorsController');
 $r3->any('/errors/my', 'App\Controllers\MyErrorsController');
 $r3->any('/search/', 'App\Controllers\SearchController');
 $r3->any('/search/result/*', 'App\Controllers\SearchResultController');
+$r3->any('/51cto/', 'App\Controllers\CtoController');
+$r3->any('/51cto/errors/', 'App\Controllers\CtoErrorsController');
+$r3->any('/51cto/current/', 'App\Controllers\CtoCurrentController');
+$r3->any('/51cto/examine/*', 'App\Controllers\CtoExamineController');
+$r3->any('/51cto/search/', 'App\Controllers\CtoSearchController');
+$r3->any('/51cto/search/result/*', 'App\Controllers\CtoSearchResultController');

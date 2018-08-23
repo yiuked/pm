@@ -1,0 +1,44 @@
+{include file='../commons/header.html'}
+<div style="width: 980px;margin: 0 auto;border-right:1px solid #e5e5e5;border-left: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;">
+    <div class="bd">
+      <div class="page__bd">
+        <div class="weui-cells">
+          {foreach $examines as $examine}
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+              <p class="weui-media-box__desc">{$examine.title}</p>
+            </div>
+            <div class="weui-cell__ft">
+              <a href="/51cto/examine/{$examine.examine_id}" class="weui-btn weui-btn_mini weui-btn_default">答题</a>
+            </div>
+          </div>
+          {/foreach}
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+              <p class="weui-media-box__desc">题目搜索</p>
+            </div>
+            <div class="weui-cell__ft">
+              <a href="/51cto/search/" class="weui-btn weui-btn_mini weui-btn_default">搜索</a>
+            </div>
+          </div>
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+              <p class="weui-media-box__desc">现有错题本</p>
+            </div>
+            <div class="weui-cell__ft">
+              <a href="/51cto/current/" class="weui-btn weui-btn_mini weui-btn_default">答题</a>
+            </div>
+          </div>
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+              <p class="weui-media-box__desc">原错题本</p>
+            </div>
+            <div class="weui-cell__ft">
+              <a href="/51cto/errors/" class="weui-btn weui-btn_mini weui-btn_default">答题</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{include file='../commons/footer.html'}

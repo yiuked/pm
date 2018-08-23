@@ -14,7 +14,7 @@ class SearchResultController extends Controller
 {
     public function post($search) {
         $cols = Array("*");
-        $search = urldecode($search);
+        $search = trim(urldecode($search));
         $subjects = $this->db->where('name', "%{$search}%", 'LIKE', 'or')
             ->where('itemA', "%{$search}%", 'LIKE', 'or')
             ->where('itemB', "%{$search}%", 'LIKE', 'or')

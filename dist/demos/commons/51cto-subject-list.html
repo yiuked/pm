@@ -1,0 +1,26 @@
+{foreach $subjects as $subject}
+<br>
+<div>{$subject@iteration}.{if $subject.title|default:false}{$subject.title}{else}{$subject.question_title}{/if}</div>
+<div class="checked-item">
+    <input type="radio" name="checked[{$subject.question_id}]" value="A" {if $subject.checked|default:false && $subject.checked=='A'}checked{/if} {if $show}disabled{/if}> A.{$subject.itemA}
+    {if $show && $subject.answer=='A'}<i class="weui-icon-success"></i>{/if}
+</div>
+<div class="checked-item">
+    <input type="radio" name="checked[{$subject.question_id}]" value="B" {if $subject.checked|default:false && $subject.checked=='B'}checked{/if} {if $show}disabled{/if}> B.{$subject.itemB}
+    {if $show && $subject.answer=='B'}<i class="weui-icon-success"></i>{/if}
+</div>
+<div class="checked-item">
+    <input type="radio" name="checked[{$subject.question_id}]" value="C" {if $subject.checked|default:false && $subject.checked=='C'}checked{/if} {if $show}disabled{/if}> C.{$subject.itemC}
+    {if $show && $subject.answer=='C'}<i class="weui-icon-success"></i>{/if}
+</div>
+<div class="checked-item">
+    <input type="radio" name="checked[{$subject.question_id}]" value="D" {if $subject.checked|default:false && $subject.checked=='D'}checked{/if} {if $show}disabled{/if}> D.{$subject.itemD}
+    {if $show && $subject.answer=='D'}<i class="weui-icon-success"></i>{/if}
+</div>
+{if $show == true}
+<br>
+<div><strong>解析</strong></div>
+<div>答案:{$subject.answer}</div>
+<div>{$subject.analyze}</div>
+{/if}
+{/foreach}
