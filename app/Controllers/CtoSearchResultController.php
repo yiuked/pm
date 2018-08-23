@@ -35,6 +35,6 @@ class CtoSearchResultController extends Controller
         $this->smarty->assign('show', true);
         $this->smarty->assign('keyword', $search);
         $this->smarty->assign('msg', "共{$static['total']}道题，答对{$static['isTrue']}道，正确率{$static['trueApr']}%.");
-        return $this->smarty->display('search/result.html');
+        return $this->smarty->display('51cto/search_result.html');
     }
 }
