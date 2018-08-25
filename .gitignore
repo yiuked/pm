@@ -1,4 +1,6 @@
 .idea
-smarty
-app/config
-storage
+composer.lock
+/smarty
+/app/config
+/storage
+/vendor

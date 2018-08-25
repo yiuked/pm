@@ -1,5 +1,5 @@
 {margin:0px; padding:0px;}
-body { min-width:1234px; background:#eee; font-family: STHeiti,"Microsoft Yahei", "寰蒋闆呴粦", tahoma,arial,'Hiragino Sans GB',\5b8b\4f53,sans-serif;font-size:12px; padding:0px;margin:0px;  color:#323232; }
+body {background:#eee; font-family: STHeiti,"Microsoft Yahei", "寰蒋闆呴粦", tahoma,arial,'Hiragino Sans GB',\5b8b\4f53,sans-serif;font-size:12px; padding:0px;margin:0px;  color:#323232; }
 a {color:#323232; text-decoration:none; outline:none; cursor:pointer; }
 .clear {margin:0px; padding:0px; clear:both;}
 ul,li{list-style-type:none}
@@ -13,15 +13,13 @@ h1,h2,h3,h4,h5,h6 {font-weight:normal; padding:0px; margin:0px;}
 .body-content{
     background:#fff;
     border:1px solid #e1e1e1;
-    margin:20px auto;
-    width: 958px;
+    margin:0 auto;
+    max-width: 958px;
     position:relative;
 }
-.agreement_sign {background:url('../images/static/about/agreement.png') no-repeat;height:156px;width:196px;position:absolute;right:10px;top:5px;}
 .content{
     overflow: hidden;
-    margin:auto;
-    width: 730px;
+    margin:15pt;
 }
 .tkCMain {
     color: #333333;
