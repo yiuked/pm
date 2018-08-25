@@ -62,3 +62,6 @@ footer a {
   color: #999;
   text-decoration: none;
 }
+.main{
+    max-width: 980px;margin: 0 auto;
+}
