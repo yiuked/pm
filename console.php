@@ -28,6 +28,51 @@ foreach ($argv as $key => $v) {
     }
     $args[$lines[0]] = $lines[1];
 }
+if (isset($args['custom'])) {
+    $jsonFiles = glob("storage/custom/*.json");
+    foreach ($jsonFiles as $json) {
+        $string = file_get_contents($json);
+        $object = json_decode($string, true);
+        if (isset($object['examine'])) {
+            $result = $db->where('examine_id', $object['examine']['examine_id'])->getOne('cto_examine', 'id');
+            if (empty($result)) {
+                $db->insert('cto_examine', ['examine_id' => $object['examine']['examine_id'], 'title' => $object['examine']['title']]);
+            }
+        }
+        if (isset($object['question']) && count($object['question']) > 0) {
+            $question = $object['question'];
+            foreach ($question as $subject) {
+                $result = $db->where('question_id', $subject['question_id'])->getOne('cto_question', 'id');
+                if (empty($result)) {
+                    $insertData = array(
+                        "question_id" =>  $subject['question_id'],
+                        "examine_id" =>  $object['examine']['examine_id'],
+                        "question_title" => strip_tags($subject['question_title']),
+                        "question_type" => $subject['question_type'],
+                        "is_right" => $subject['is_right'],
+                        "answer" => $subject['answer'],
+                        "single_score" => $subject['single_score'],
+                        "erid" => $subject['erid'],
+                        "knowledge" => $subject['knowledge'],
+                        "analyze" => $subject['analyze'],
+                        "is_review" => '0',
+                        "every_score" => $subject['every_score'],
+                        "answer_file" => $subject['answer_file'],
+                        "answer_file_name" => $subject['answer_file_name'],
+                        "itemA" => strip_tags($subject['itemA']),
+                        "itemB" => strip_tags($subject['itemB']),
+                        "itemC" => strip_tags($subject['itemC']),
+                        "itemD" => strip_tags($subject['itemD']),
+                        "user_answer" => $subject['user_answer']
+                    );
+                    $db->insert('cto_question', $insertData);
+                    if ($db->getLastErrno())
+                        echo 'Error: '. $db->getLastError() . '\n';
+                }
+            }
+        }
+    }
+}
 if (isset($args['test'])) {
     $jsonFiles = glob("storage/test/*.json");
     foreach ($jsonFiles as $json) {
