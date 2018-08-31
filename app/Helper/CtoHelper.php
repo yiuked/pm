@@ -36,10 +36,10 @@ class CtoHelper
             }
         }
         if (!empty($errorID)) {
-            $db->where('question_id', $errorID, 'in')->update('cto_subjects', array('is_error' => '1'));
+            $db->where('id', $errorID, 'in')->update('cto_subjects', array('is_error' => '1'));
         }
         if (!empty($isTrueID)) {
-            $db->where('question_id', $isTrueID, 'in')->update('cto_subjects', array('is_error' => '0'));
+            $db->where('id', $isTrueID, 'in')->update('cto_subjects', array('is_error' => '0'));
         }
 
         return array('total' => $total, 'checked' => count($checked), 'isTrue' => $isOK, 'trueApr' => round($isOK / $total, 4) * 100);
@@ -58,11 +58,11 @@ class CtoHelper
                     if ($subject['answer'] == $checked[$subject['question_id']]) {
                         $subject['is_ok'] = true;
                         $isOK++;
-                        if ($subject['is_right'] == 1) {
+                        if ($subject['is_right'] == 0) {
                             $isTrueID[] = $subject['id'];
                         }
                     } else {
-                        if ($subject['is_right'] == 0) {
+                        if ($subject['is_right'] == 1) {
                             $errorID[] = $subject['id'];
                         }
                     }
@@ -70,10 +70,10 @@ class CtoHelper
             }
         }
         if (!empty($errorID)) {
-            $db->where('question_id', $errorID, 'in')->update('cto_question', array('is_right' => '1'));
+            $db->where('id', $errorID, 'in')->update('cto_question', array('is_right' => '0'));
         }
         if (!empty($isTrueID)) {
-            $db->where('question_id', $isTrueID, 'in')->update('cto_question', array('is_right' => '0'));
+            $db->where('id', $isTrueID, 'in')->update('cto_question', array('is_right' => '1'));
         }
 
         return array('total' => $total, 'checked' => count($checked), 'isTrue' => $isOK, 'trueApr' => round($isOK / $total, 4) * 100);

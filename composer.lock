@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+    "hash": "1ddde5c2806fac6b1082c7bb8f930646",
     "content-hash": "6f165e5d1fa081b727f27fe1564d3429",
     "packages": [
         {
@@ -49,7 +50,7 @@
                 }
             ],
             "description": "PHP MySQL Wrapper and object mapper which utilizes MySQLi and prepared statements",
-            "time": "2018-07-03T09:41:17+00:00"
+            "time": "2018-07-03 09:41:17"
         },
         {
             "name": "respect/rest",
@@ -98,7 +99,7 @@
             ],
             "description": "Thin controller for RESTful applications",
             "homepage": "http://respect.li/",
-            "time": "2018-01-27T13:15:09+00:00"
+            "time": "2018-01-27 13:15:09"
         }
     ],
     "packages-dev": [],
