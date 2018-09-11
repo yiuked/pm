@@ -4,3 +4,5 @@ composer.lock
 /app/config
 /storage
 /vendor
+/curl
+/temp

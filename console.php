@@ -28,6 +28,7 @@ foreach ($argv as $key => $v) {
     }
     $args[$lines[0]] = $lines[1];
 }
+
 if (isset($args['custom'])) {
     $jsonFiles = glob("storage/custom/*.json");
     foreach ($jsonFiles as $json) {
@@ -151,6 +152,122 @@ if (isset($args['json'])) {
                 );
                 if (empty($result)) {
                     $db->insert('cto_subjects', $insertData);
+                }
+            }
+        }
+    }
+}
+if (isset($args['qinhui'])) {
+    $jsonFiles = glob("storage/custom/*.json");
+    foreach ($jsonFiles as $json) {
+        $string = file_get_contents($json);
+        $object = json_decode($string, true);
+        if (isset($object) && count($object) > 0) {
+            $question = $object;
+            foreach ($question as $subject) {
+                $result = $db->where('question_id', $subject['question_id'])->getOne('cto_question', 'id');
+                if (empty($result)) {
+                    $insertData = array(
+                        "question_id" =>  $subject['question_id'],
+                        "examine_id" =>  $subject['examine_id'],
+                        "question_title" => strip_tags($subject['question_title']),
+                        "question_type" => $subject['question_type'],
+                        "is_right" => $subject['is_right'],
+                        "answer" => $subject['answer'],
+                        "single_score" => $subject['single_score'],
+                        "erid" => $subject['erid'],
+                        "knowledge" => $subject['knowledge'],
+                        "analyze" => $subject['analyze'],
+                        "is_review" => '0',
+                        "every_score" => $subject['every_score'],
+                        "answer_file" => $subject['answer_file'],
+                        "answer_file_name" => $subject['answer_file_name'],
+                        "itemA" => strip_tags($subject['itemA']),
+                        "itemB" => strip_tags($subject['itemB']),
+                        "itemC" => strip_tags($subject['itemC']),
+                        "itemD" => strip_tags($subject['itemD']),
+                        "user_answer" => $subject['user_answer']
+                    );
+                    $db->insert('cto_question', $insertData);
+                    if ($db->getLastErrno())
+                        echo 'Error: '. $db->getLastError() . '\n';
+                }
+            }
+        }
+    }
+}
+if (isset($args['batch'])) {
+    $jsonFiles = glob("curl/tmp/*.json");
+    foreach ($jsonFiles as $json) {
+        $string = file_get_contents($json);
+        $object = json_decode($string, true);
+        if (isset($object) && count($object) > 0) {
+            if (empty($object['data'])) {
+                echo "File:{$json} is empty\n";
+                continue;
+            }
+            if (isset($object['data']['list'])) {
+                $question = $object['data']['list'];
+                foreach ($question as $subject) {
+                    $result = $db->where('id', $subject['id'])->getOne('subjects', 'id');
+                    if (empty($result)) {
+                        $insertData = array(
+                            "id" => $subject['id'],
+                            "no" => $subject['no'],
+                            "name" => $subject['name'],
+                            "itemA" => $subject['itemA'],
+                            "itemB" => $subject['itemB'],
+                            "itemC" => $subject['itemC'],
+                            "itemD" => $subject['itemD'],
+                            "result" => $subject['result'],
+                            "jiexi" => $subject['jiexi'],
+                            "type_id" => $subject['type_id'],
+                            "type_small_id" => $subject['type_small_id'],
+                            "test_id" => $subject['test_id'],
+                            "true_percent" => $subject['true_percent'],
+                            "answer_count" => $subject['answer_count'],
+                            "true_count" => $subject['true_count'],
+                            "is_fav" => $subject['is_fav']
+                        );
+                        $db->insert('subjects', $insertData);
+                        if ($db->getLastErrno())
+                            echo 'Error: '. $db->getLastError() . '\n';
+                    }
+                }
+            } else {
+                $testType = $object['data'];
+                foreach ($testType as $type) {
+                    $result = $db->where('id', $type['id'])->getOne('testtype', 'id');
+                    if (empty($result)) {
+                        $insertData = array(
+                            "id" => $type['id'],
+                            "type_small_id" => $type['type_small_id'],
+                            "name" => $type['name'],
+                            "is_free" => $type['is_free'],
+                            "price" => $type['price'],
+                            "type_id" => $type['type_id'],
+                            "time_limit" => $type['time_limit'],
+                            "count" => $type['count'],
+                            "is_upload" => $type['is_upload'],
+                            "group_id" => $type['group_id'],
+                            "buy_uid" => $type['buy_uid'],
+                            "balance" => $type['balance'],
+                            "test_order" => $type['test_order'],
+                            "coupon" => $type['coupon'],
+                            "answer_status" => $type['id'],
+                            "test_count" => $type['answer_status'],
+                            "test_percent" => (int)$type['test_percent'],
+                            "creat_time" => (int)$type['creat_time'],
+                            "last_index" => $type['last_index'],
+                            "user_answer" => $type['user_answer'],
+                            "err_count" => $type['err_count'],
+                            "rest_time" => $type['rest_time'],
+                            "is_buy" => $type['is_buy']
+                        );
+                        $db->insert('testtype', $insertData);
+                        if ($db->getLastErrno())
+                            echo 'Error: '. $db->getLastError() . '\n';
+                    }
                 }
             }
         }

@@ -23,7 +23,7 @@ class SearchController extends Controller
             ->where('itemB', "%{$search}%", 'LIKE', 'or')
             ->where('itemC', "%{$search}%", 'LIKE', 'or')
             ->where('itemD', "%{$search}%", 'LIKE', 'or')
-            ->get("subjects", null, $cols);
+            ->get("subjects", 100, $cols);
         foreach ($subjects as &$subject) {
             $subject['name'] = str_replace($search, "<span style='color: red'>{$search}</span>", $subject['name']);
             $subject['itemA'] = str_replace($search, "<span style='color: red'>{$search}</span>", $subject['itemA']);
